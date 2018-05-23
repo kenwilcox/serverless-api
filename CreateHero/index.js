@@ -4,9 +4,9 @@ module.exports = function (context, req) {
     MongoClient.connect(process.env.CosmosDBURL, { auth: auth }, (err, database) => {
         if (err) throw err;
         let hero = ({ id, name, saying } = req.body);
-        console.log("hero.id:" + hero.id);
-        console.log("hero.name:" + hero.name);
-        console.log("hero.saying:" + hero.saying);
+        context.log("hero.id:" + hero.id);
+        context.log("hero.name:" + hero.name);
+        context.log("hero.saying:" + hero.saying);
         var db = database.db(process.env.CosmosDB);
         db.collection(process.env.CosmosDBCollection).insertOne(
             {

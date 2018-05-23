@@ -5,9 +5,9 @@ module.exports = function (context, req) {
         if (err) throw err;
         const db = database.db(process.env.CosmosDB);
         let hero = ({ id, name, saying } = req.body);
-        console.log("hero.id:" + hero.id);
-        console.log("hero.name:" + hero.name);
-        console.log("hero.saying:" + hero.saying);
+        context.log("hero.id:" + hero.id);
+        context.log("hero.name:" + hero.name);
+        context.log("hero.saying:" + hero.saying);
         let heroId = req.params.id;
         db.collection(process.env.CosmosDBCollection).findOneAndDelete(
             { id: heroId },            
