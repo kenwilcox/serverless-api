@@ -8,7 +8,7 @@ module.exports = function(context, req) {
         const db = database.db(process.env.CosmosDB);
         db.collection(process.env.CosmosDBCollection).find().toArray((err, result) => {
             if (err) throw err;
-            console.log('retrieved successfully');
+            console.log('This is a happy moment');
             result.forEach(hero => delete hero._id);
             context.res ={
                 //status: 200,
