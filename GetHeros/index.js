@@ -4,11 +4,11 @@ module.exports = function(context, req) {
     context.log('Javascript HTTP trigger function processed a request.');
     MongoClient.connect(process.env.CosmosDBURL, {auth: auth}, (err, database) => {
         if (err) throw err;
-        console.log('Connected successfully');
+        context.log('Connected successfully');
         const db = database.db(process.env.CosmosDB);
         db.collection(process.env.CosmosDBCollection).find().toArray((err, result) => {
             if (err) throw err;
-            console.log('This is a happy moment');
+            context.log('This is a happy moment');
             result.forEach(hero => delete hero._id);
             context.res ={
                 //status: 200,
